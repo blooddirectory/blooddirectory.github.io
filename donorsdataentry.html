@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+    <title>Donors data entry</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Nastaliq+Urdu&display=swap" rel="stylesheet">
+    <style type="text/css" media="all">
+        body {
+            color:white;
+            background-color: #3e2723;
+            display: flex;
+            justify-content: center;
+            align-items: flex-start;
+            font-family: 'Noto Nastaliq Urdu';
+        }
+        body form {
+            width:75%;
+            display: flex;
+            flex-direction: column;
+        }
+        .submit {
+            color:white;
+            border: none;
+            background-color: transparent;
+            font-family: 'Noto Nastaliq Urdu';
+            font-weight: bold;
+        }
+        input {
+            background-color: grey;
+            height: 45px;
+            margin:10px 0px;
+            padding-right: 10px;
+            border: none;
+            color:black;
+            font-family:'Noto Nastaliq Urdu';
+        }
+        select{
+            background-color: grey;
+            padding-right: 10px;
+            margin:10px 0px;
+            height:45px;
+        }
+    </style>
+</head>
+<body>
+    <form dir="rtl" action="https://sheetdb.io/api/v1/sy71yhij67zb5" method="POST" accept-charset="utf-8" id="sheetdb-form">
+        نام
+        <input type="text" name="data[name]" id="name" value="" />
+        فون نمبر
+        <input type="txt" name="data[phone]" id="phone" value="" />
+        بلڈ گروپ
+        <select name="data[bgroup]" id="bgroup">
+            <option value="a+">A+</option>
+            <option value="a-">A-</option>
+            <option value="b+">B+</option>
+            <option value="b-">B-</option>
+            <option value="ab+">AB+</option>
+            <option value="ab-">AB-</option>
+            <option value="o+">O+</option>
+            <option value="o-">O-</option>
+        </select>
+        مستقل پتہ
+        <input type="text" name="data[address]" id="address" value="" />
+        <input class="submit" type="Submit" value="اندراج کریں" />
+    </form>
+    <script src="https://sheetdb.io/handlebars.js"></script>
+    <script>
+        var form = document.getElementById('sheetdb-form');
+        form.addEventListener("submit", e => {
+            e.preventDefault();
+            fetch(form.action, {
+                method: "POST",
+                body: new FormData(document.getElementById("sheetdb-form")),
+            }).then(
+                response => response.json()
+            ).then((html) => {
+                    // you can put any JS code here
+                    alert('Success');
+                });
+        });
+    </script>
+</body>
+</html>
